@@ -1,0 +1,1 @@
+Coloque aqui seu currículo em PDF e depois altere o link em client/src/data/profile.js

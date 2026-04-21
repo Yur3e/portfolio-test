@@ -273,9 +273,6 @@ export const siteContent = {
       sendError: "Não foi possível enviar a mensagem.",
       genericError: "Erro ao enviar a mensagem."
     },
-    footer: {
-      rights: "© 2026 José Yure da Silva Fernandes. Todos os direitos reservados."
-    }
   },
   en: {
     profile: {
@@ -551,8 +548,5 @@ export const siteContent = {
       sendError: "Could not send the message.",
       genericError: "Error sending the message."
     },
-    footer: {
-      rights: "© 2026 José Yure da Silva Fernandes. All rights reserved."
-    }
   }
 };

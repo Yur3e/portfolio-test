@@ -3,7 +3,7 @@ import ButtonLink from "../components/common/ButtonLink";
 import Container from "../components/layout/Container";
 import { useLanguage } from "../context/LanguageContext";
 
-const API_URL = "http://localhost:3001/api/contact";
+const API_URL = `${import.meta.env.VITE_API_URL || "http://localhost:3001"}/api/contact`;
 
 export default function ContactSection() {
   const { content } = useLanguage();

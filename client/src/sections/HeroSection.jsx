@@ -7,10 +7,10 @@ export default function HeroSection() {
   const { content } = useLanguage();
   const { profile, hero, contact, projects, experience } = content;
   const metrics = [
-    { value: String(projects.length).padStart(2, "0"), label: "active_projects" },
-    { value: String(experience.length).padStart(2, "0"), label: "career_logs" },
-    { value: String(stacks.length).padStart(2, "0"), label: "stack_items" },
-    { value: "PT/EN", label: "language_mode" }
+    { value: String(projects.length).padStart(2, "0"), label: hero.metrics.projects },
+    { value: String(experience.length).padStart(2, "0"), label: hero.metrics.experience },
+    { value: String(stacks.length).padStart(2, "0"), label: hero.metrics.stack },
+    { value: "PT/EN", label: hero.metrics.languages }
   ];
 
   return (
@@ -24,7 +24,7 @@ export default function HeroSection() {
 
           <div className="hero-content">
             <div className="hero-copy">
-              <p className="hero-kicker">system_status: online</p>
+              <p className="hero-kicker">{hero.kicker}</p>
               <h1 className="hero-title">
                 <span>Building</span>
                 <span className="hero-title-accent">resilient software.</span>
@@ -38,7 +38,7 @@ export default function HeroSection() {
                   {hero.linkedin}
                 </ButtonLink>
                 <ButtonLink href="#experiencia" variant="secondary">
-                  Logs
+                  {hero.experienceButton}
                 </ButtonLink>
               </div>
 
@@ -73,7 +73,7 @@ export default function HeroSection() {
           </div>
 
           <div className="hero-frame hero-frame-bottom">
-            <span>transmission_from: joao_pessoa_brazil</span>
+            <span>{hero.locationLabel}</span>
             <a href={`mailto:${profile.email}`} className="hero-inline-link">
               {profile.email}
             </a>

@@ -59,10 +59,10 @@ export default function ContactSection() {
       <div className="contact-terminal-shell">
         <Container>
           <div className="contact-terminal-copy">
-            <span className="contact-terminal-kicker">system_ready</span>
+            <span className="contact-terminal-kicker">{contact.kicker}</span>
             <h2 className="contact-terminal-title">
-              <span>Initialize</span>
-              <span className="contact-terminal-accent">contact.</span>
+              <span>{contact.titleLineOne}</span>
+              <span className="contact-terminal-accent">{contact.titleLineTwo}</span>
             </h2>
             <p className="contact-terminal-description">{contact.description}</p>
 

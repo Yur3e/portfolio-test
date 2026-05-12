@@ -1,4 +1,4 @@
-import QuestSectionShell from "../components/game/QuestSectionShell";
+import SectionShell from "../components/common/SectionShell";
 import { useLanguage } from "../context/LanguageContext";
 const STACK_BALANCE = [
   { label: "frontend", value: 86 },
@@ -46,7 +46,7 @@ function TechNodeIcon({ kind }) {
     "aria-hidden": "true"
   };
 
-  if (kind === "core_engine") {
+  if (kind === "frontend") {
     return (
       <svg {...commonProps}>
         <circle cx="12" cy="12" r="3.2" />
@@ -64,7 +64,7 @@ function TechNodeIcon({ kind }) {
     );
   }
 
-  if (kind === "data_layer") {
+  if (kind === "database") {
     return (
       <svg {...commonProps}>
         <ellipse cx="12" cy="6.2" rx="6.6" ry="2.9" />
@@ -85,21 +85,37 @@ export default function StacksSection() {
   const { content } = useLanguage();
   const { stacks: stacksContent } = content;
   const groups = [
-    { title: "core_engine", items: ["JavaScript", "React", "Node.js", "C#"] },
-    { title: "data_layer", items: ["Python", "MySQL", "SQLite", "MongoDB"] },
-    { title: "infrastructure", items: ["Django", "Flask", "SQL Server"] },
-    { title: "protocol", items: ["Git", "API REST", "UI/UX", "Figma"] }
+    {
+      id: "frontend",
+      title: stacksContent.groups.frontend,
+      items: ["JavaScript", "React", "Node.js", "C#"]
+    },
+    {
+      id: "database",
+      title: stacksContent.groups.database,
+      items: ["Python", "MySQL", "SQLite", "MongoDB"]
+    },
+    {
+      id: "infrastructure",
+      title: stacksContent.groups.infrastructure,
+      items: ["Django", "Flask", "SQL Server"]
+    },
+    {
+      id: "tooling",
+      title: stacksContent.groups.tooling,
+      items: ["Git", "API REST", "UI/UX", "Figma"]
+    }
   ];
 
   return (
-    <QuestSectionShell
+    <SectionShell
       id="stacks"
       eyebrow={stacksContent.eyebrow}
       title={stacksContent.title}
       description={stacksContent.description}
     >
       <div className="tech-core-layout">
-        <div className="inventory-summary-card tech-visual-panel">
+        <div className="stack-summary-card tech-visual-panel">
           <div className="tech-radar" aria-hidden="true">
             <svg viewBox="0 0 320 320" className="tech-radar-svg">
               <polygon points={polygonPoints(130)} className="tech-radar-grid tech-radar-grid-outer" />
@@ -136,14 +152,14 @@ export default function StacksSection() {
               <polygon points={balancePoints()} className="tech-radar-shape-stroke" />
             </svg>
           </div>
-          <p className="inventory-summary-title">{stacksContent.inventoryTitle}</p>
+          <p className="stack-summary-title">{stacksContent.summaryTitle}</p>
         </div>
 
         <div className="tech-node-grid">
           {groups.map((group) => (
-            <article key={group.title} className="inventory-item tech-node-card">
+            <article key={group.id} className="stack-group-card tech-node-card">
               <div className="tech-node-head">
-                <TechNodeIcon kind={group.title} />
+                <TechNodeIcon kind={group.id} />
                 <p className="tech-node-title">{group.title}</p>
               </div>
               <div className="tech-node-list">
@@ -155,6 +171,6 @@ export default function StacksSection() {
           ))}
         </div>
       </div>
-    </QuestSectionShell>
+    </SectionShell>
   );
 }

@@ -1,4 +1,4 @@
-import QuestSectionShell from "../components/game/QuestSectionShell";
+import SectionShell from "../components/common/SectionShell";
 import { useLanguage } from "../context/LanguageContext";
 
 export default function AboutSection() {
@@ -6,25 +6,25 @@ export default function AboutSection() {
   const { about } = content;
 
   return (
-    <QuestSectionShell
+    <SectionShell
       id="sobre"
       eyebrow={about.eyebrow}
       title={about.title}
       description={about.description}
     >
-      <div className="about-quest-grid">
+      <div className="about-grid">
         <div className="content-card about-copy-card">
           {about.paragraphs.map((paragraph) => (
             <p key={paragraph}>{paragraph}</p>
           ))}
         </div>
 
-        <aside className="codex-card bio-grid-shell">
+        <aside className="profile-summary-card bio-grid-shell">
           <div>
-            <p className="codex-card-title">{about.codexTitle}</p>
-            <div className="codex-card-list">
-              {about.codexItems.map((item) => (
-                <div key={item.label} className="codex-card-item">
+            <p className="summary-card-title">{about.summaryTitle}</p>
+            <div className="summary-card-list">
+              {about.summaryItems.map((item) => (
+                <div key={item.label} className="summary-card-item">
                   <span>{item.label}</span>
                   <strong>{item.value}</strong>
                 </div>
@@ -32,22 +32,22 @@ export default function AboutSection() {
             </div>
           </div>
 
-          <div className="attribute-panel">
-            <p className="codex-card-title">{about.statsTitle}</p>
+          <div className="focus-panel">
+            <p className="summary-card-title">{about.statsTitle}</p>
             {about.stats.map((item) => (
-              <div key={item.label} className="attribute-row">
-                <div className="attribute-row-head">
+              <div key={item.label} className="focus-row">
+                <div className="focus-row-head">
                   <span>{item.label}</span>
                   <strong>{item.value}</strong>
                 </div>
-                <div className="attribute-track" aria-hidden="true">
-                  <span className="attribute-fill" style={{ width: `${item.value}%` }} />
+                <div className="focus-track" aria-hidden="true">
+                  <span className="focus-fill" style={{ width: `${item.value}%` }} />
                 </div>
               </div>
             ))}
           </div>
         </aside>
       </div>
-    </QuestSectionShell>
+    </SectionShell>
   );
 }

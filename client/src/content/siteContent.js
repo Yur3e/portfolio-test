@@ -22,107 +22,34 @@ export const siteContent = {
       pt: "Português",
       en: "English"
     },
-    game: {
-      hudAriaLabel: "Painel de campanha do portfólio",
-      hudKicker: "Campanha",
-      hudTitle: "Jornada do Portfólio",
-      hudDescription:
-        "Cada seção agora funciona como uma zona explorável com objetivo, recompensa e progresso.",
-      progressLabel: "Exploração",
-      activeLabel: "Zona ativa",
-      difficultyLabel: "Dificuldade",
-      objectiveLabel: "Objetivo",
-      rewardLabel: "Recompensa",
-      sections: [
-        {
-          id: "sobre",
-          level: "Lvl 01",
-          label: "Prólogo do Player",
-          objective: "Ler o perfil",
-          reward: "+ contexto do dev",
-          difficulty: "Baixa"
-        },
-        {
-          id: "stacks",
-          level: "Lvl 02",
-          label: "Inventário Técnico",
-          objective: "Inspecionar stack",
-          reward: "+ build desbloqueada",
-          difficulty: "Baixa"
-        },
-        {
-          id: "projetos",
-          level: "Lvl 03",
-          label: "Missões em Campo",
-          objective: "Abrir projetos",
-          reward: "+ portfólio prático",
-          difficulty: "Média"
-        },
-        {
-          id: "experiencia",
-          level: "Lvl 04",
-          label: "Log de Batalhas",
-          objective: "Ler trajetória",
-          reward: "+ XP acumulado",
-          difficulty: "Alta"
-        },
-        {
-          id: "contato",
-          level: "Lvl 05",
-          label: "Quest Final",
-          objective: "Iniciar contato",
-          reward: "+ conexão direta",
-          difficulty: "Boss"
-        }
-      ]
-    },
     hero: {
       available: "Disponível para oportunidades",
+      kicker: "portfolio_status: online",
       lead:
         "Interfaces com presença, lógica organizada e projetos onde visual e dados conversam de verdade.",
-      sheetTitle: "Ficha do player",
-      stats: [
-        { label: "Classe", value: "Dev de Software" },
-        { label: "Build", value: "Web + Dados" },
-        { label: "Base", value: "João Pessoa, PB" },
-        { label: "Modo", value: "Disponível" }
-      ],
+      sheetTitle: "Resumo profissional",
+      metrics: {
+        projects: "projetos ativos",
+        experience: "experiências",
+        stack: "tecnologias",
+        languages: "idiomas"
+      },
       pillarsLabel: "Pilares da proposta de valor",
       pillars: [
         "Frontend com identidade e sensação de sistema vivo.",
         "Backends pensados para manutenção, clareza e evolução.",
         "Projetos orientados a dados, métricas e leitura de contexto."
       ],
-      supportTitle: "Cena interativa",
-      supportText:
-        "O d20 agora fica solto pela página inteira. Você pode arrastar, girar, arremessar nas bordas e clicar para forçar uma nova rolagem.",
-      viewProjects: "Ver projetos",
       linkedin: "LinkedIn",
-      fieldKicker: "Campo d20",
-      fieldTitle: "Mova, carregue, solte e role de novo.",
-      fieldBody:
-        "Um campo inspirado em rolagens de d20, partículas vivas e visualização de estados para dar personalidade real ao topo da página.",
-      fieldRoll: "Rolagem",
-      fieldCharge: "Carga",
-      fieldFocus: "Foco",
-      fieldModeLabel: "Estado",
-      fieldModeIdle: "Órbita livre",
-      fieldModeHover: "Campo em leitura",
-      fieldModeHold: "Carga acumulando",
-      fieldModeBurst: "Release executado",
-      fieldReroll: "Rolar d20",
-      fieldHint: "Passe o mouse para deformar o campo. Clique e segure para acumular energia."
-    },
-    dice: {
-      hint: "Arraste, gire e solte",
-      ariaLabel: "Dado d20 interativo"
+      experienceButton: "Experiência",
+      locationLabel: "base: joao_pessoa_brazil"
     },
     about: {
       eyebrow: "Sobre mim",
       title: "Quem sou eu",
       description: "Resumo profissional e foco de atuação.",
-      codexTitle: "Resumo rapido",
-      codexItems: [
+      summaryTitle: "Resumo rápido",
+      summaryItems: [
         { label: "Origem", value: "UEPB · Ciência de Dados" },
         { label: "Foco", value: "Frontend, backend e dados" },
         { label: "Estilo", value: "Clareza, estrutura e evolução" }
@@ -142,20 +69,21 @@ export const siteContent = {
       eyebrow: "Tecnologias",
       title: "Stacks principais",
       description: "Ferramentas e linguagens com as quais venho construindo projetos.",
-      inventoryTitle: "Stack atual",
-      inventoryText:
-        "Cada item da build compõe o loadout usado para criar aplicações web, backends e projetos orientados a dados."
+      summaryTitle: "Stack atual",
+      groups: {
+        frontend: "Frontend",
+        database: "Dados",
+        infrastructure: "Backend",
+        tooling: "Ferramentas"
+      }
     },
     projectsSection: {
       eyebrow: "Projetos",
       title: "Projetos em destaque",
       description: "Alguns trabalhos e ideias que representam minha forma de desenvolver.",
+      itemLabel: "projeto",
       demo: "Demo",
-      repo: "Repositório",
-      missionLabel: "Tipo",
-      rewardLabel: "Recompensa",
-      missions: ["Side Quest", "Dungeon Run", "Data Raid"],
-      rewards: ["UX refinada", "Fluxo validado", "Insight aplicado"]
+      repo: "Repositório"
     },
     projects: [
       {
@@ -167,12 +95,12 @@ export const siteContent = {
         repo: "#"
       },
       {
-        title: "Sistema de Cadastro e Atendimento",
+        title: "Portfólio Pessoal",
         description:
-          "Protótipo com login, cadastro e geração de ficha de atendimento, pensado para fluxo mobile e apresentação profissional.",
-        tech: ["React", "JavaScript", "UI/UX", "Figma"],
+          "Portfólio profissional desenvolvido com React, Vite, Node.js e Express, com conteúdo bilíngue, tema claro/escuro, currículo público e formulário de contato conectado ao backend.",
+        tech: ["React", "Vite", "Node.js", "Express", "Render"],
         demo: "#",
-        repo: "#"
+        repo: "https://github.com/Yur3e/portfolio-test"
       },
       {
         title: "Bilhetrometro",
@@ -186,10 +114,7 @@ export const siteContent = {
     experienceSection: {
       eyebrow: "Experiência",
       title: "Trajetória",
-      description: "Experiências que construíram minha base técnica e prática.",
-      rankLabel: "Tier",
-      rewardLabel: "XP",
-      ranks: ["Elite", "Tático", "Veterano", "Research"]
+      description: "Experiências que construíram minha base técnica e prática."
     },
     experience: [
       {
@@ -246,19 +171,18 @@ export const siteContent = {
         note: "Bolsista do Programa Institucional de Bolsas de Iniciação Científica - PIBIC - EM/CNPq/UFPB.",
         bullets: [
           "Desenvolvi uma aplicação educacional em Unity 3D com C#, unindo lógica de programação e proposta pedagógica.",
-          "Apliquei princípios de Serious Games e gamificação para tornar a experiência mais engajadora e orientada ao objetivo do projeto.",
+          "Apliquei princípios de design interativo para tornar a experiência mais engajadora e alinhada aos objetivos pedagógicos.",
           "Conduzi o processo de build para Android (APK), apoiando a validação prática da aplicação em ambiente mobile."
         ]
       }
     ],
     contact: {
       eyebrow: "Contato",
-      title: "Disponível para novas oportunidades",
+      kicker: "contato",
+      titleLineOne: "Vamos",
+      titleLineTwo: "conversar.",
       description:
         "Estou disponível para oportunidades em desenvolvimento de software, com interesse em contribuir com projetos bem estruturados, aprender com times experientes e gerar valor com soluções consistentes.",
-      finalQuestTitle: "Quest final",
-      finalQuestText:
-        "Se a campanha fizer sentido para o seu time, o portal final é simples: me chama e vamos transformar briefing em entrega.",
       contactButton: "Entrar em contato",
       github: "GitHub",
       resume: "Currículo",
@@ -297,107 +221,34 @@ export const siteContent = {
       pt: "Portuguese",
       en: "English"
     },
-    game: {
-      hudAriaLabel: "Portfolio campaign panel",
-      hudKicker: "Campaign",
-      hudTitle: "Portfolio Journey",
-      hudDescription:
-        "Each section now behaves like an explorable zone with an objective, reward, and progression.",
-      progressLabel: "Exploration",
-      activeLabel: "Active zone",
-      difficultyLabel: "Difficulty",
-      objectiveLabel: "Objective",
-      rewardLabel: "Reward",
-      sections: [
-        {
-          id: "sobre",
-          level: "Lvl 01",
-          label: "Player Prologue",
-          objective: "Read the profile",
-          reward: "+ developer context",
-          difficulty: "Low"
-        },
-        {
-          id: "stacks",
-          level: "Lvl 02",
-          label: "Tech Inventory",
-          objective: "Inspect the stack",
-          reward: "+ build unlocked",
-          difficulty: "Low"
-        },
-        {
-          id: "projetos",
-          level: "Lvl 03",
-          label: "Field Missions",
-          objective: "Open projects",
-          reward: "+ practical portfolio",
-          difficulty: "Medium"
-        },
-        {
-          id: "experiencia",
-          level: "Lvl 04",
-          label: "Battle Log",
-          objective: "Review experience",
-          reward: "+ accumulated XP",
-          difficulty: "High"
-        },
-        {
-          id: "contato",
-          level: "Lvl 05",
-          label: "Final Quest",
-          objective: "Start contact",
-          reward: "+ direct connection",
-          difficulty: "Boss"
-        }
-      ]
-    },
     hero: {
       available: "Open to opportunities",
+      kicker: "portfolio_status: online",
       lead:
         "Interfaces with presence, organized logic, and projects where visuals and data genuinely reinforce each other.",
-      sheetTitle: "Player sheet",
-      stats: [
-        { label: "Class", value: "Software Dev" },
-        { label: "Build", value: "Web + Data" },
-        { label: "Base", value: "João Pessoa, PB" },
-        { label: "Mode", value: "Available" }
-      ],
+      sheetTitle: "Professional summary",
+      metrics: {
+        projects: "active projects",
+        experience: "experiences",
+        stack: "technologies",
+        languages: "languages"
+      },
       pillarsLabel: "Value pillars",
       pillars: [
         "Frontend work with identity and the feeling of a living system.",
         "Backends designed for maintenance, clarity, and long-term growth.",
         "Data-oriented projects shaped by metrics, structure, and context."
       ],
-      supportTitle: "Interactive scene",
-      supportText:
-        "The d20 now moves across the entire page. You can drag it, spin it, throw it into the edges, and click it to force a new roll.",
-      viewProjects: "View projects",
       linkedin: "LinkedIn",
-      fieldKicker: "d20 field",
-      fieldTitle: "Move, charge, release, and roll again.",
-      fieldBody:
-        "A scene inspired by d20 rolls, living particles, and state-driven visuals to give the top of the page real personality.",
-      fieldRoll: "Roll",
-      fieldCharge: "Charge",
-      fieldFocus: "Focus",
-      fieldModeLabel: "Mode",
-      fieldModeIdle: "Free orbit",
-      fieldModeHover: "Reading field",
-      fieldModeHold: "Charging",
-      fieldModeBurst: "Burst released",
-      fieldReroll: "Roll d20",
-      fieldHint: "Hover to bend the field. Click and hold to build energy, then release."
-    },
-    dice: {
-      hint: "Drag, spin, and release",
-      ariaLabel: "Interactive d20 die"
+      experienceButton: "Experience",
+      locationLabel: "base: joao_pessoa_brazil"
     },
     about: {
       eyebrow: "About me",
       title: "Who I am",
       description: "Professional summary and main focus.",
-      codexTitle: "Quick snapshot",
-      codexItems: [
+      summaryTitle: "Quick snapshot",
+      summaryItems: [
         { label: "Origin", value: "UEPB · Data Science" },
         { label: "Focus", value: "Frontend, backend, and data" },
         { label: "Style", value: "Clarity, structure, and growth" }
@@ -417,20 +268,21 @@ export const siteContent = {
       eyebrow: "Technologies",
       title: "Core stack",
       description: "Tools and languages I have been using to build projects.",
-      inventoryTitle: "Current stack",
-      inventoryText:
-        "Each item in the build composes the loadout used to create web apps, backends, and data-oriented projects."
+      summaryTitle: "Current stack",
+      groups: {
+        frontend: "Frontend",
+        database: "Data",
+        infrastructure: "Backend",
+        tooling: "Tooling"
+      }
     },
     projectsSection: {
       eyebrow: "Projects",
       title: "Featured projects",
       description: "Some of the work and ideas that represent how I build software.",
+      itemLabel: "project",
       demo: "Demo",
-      repo: "Repository",
-      missionLabel: "Type",
-      rewardLabel: "Reward",
-      missions: ["Side Quest", "Dungeon Run", "Data Raid"],
-      rewards: ["Polished UX", "Validated flow", "Applied insight"]
+      repo: "Repository"
     },
     projects: [
       {
@@ -442,12 +294,12 @@ export const siteContent = {
         repo: "#"
       },
       {
-        title: "Registration and Service System",
+        title: "Personal Portfolio",
         description:
-          "A prototype with login, registration, and service record generation, designed for mobile flow and professional presentation.",
-        tech: ["React", "JavaScript", "UI/UX", "Figma"],
+          "Professional portfolio built with React, Vite, Node.js, and Express, featuring bilingual content, light/dark theme, public resume, and a contact form connected to the backend.",
+        tech: ["React", "Vite", "Node.js", "Express", "Render"],
         demo: "#",
-        repo: "#"
+        repo: "https://github.com/Yur3e/portfolio-test"
       },
       {
         title: "Bilhetrometro",
@@ -461,10 +313,7 @@ export const siteContent = {
     experienceSection: {
       eyebrow: "Experience",
       title: "Career path",
-      description: "Experiences that helped build my technical and practical foundation.",
-      rankLabel: "Tier",
-      rewardLabel: "XP",
-      ranks: ["Elite", "Tactical", "Veteran", "Research"]
+      description: "Experiences that helped build my technical and practical foundation."
     },
     experience: [
       {
@@ -521,19 +370,18 @@ export const siteContent = {
         note: "Scholarship holder in the Institutional Scientific Initiation Scholarship Program - PIBIC - EM/CNPq/UFPB.",
         bullets: [
           "Developed an educational application in Unity 3D with C#, combining programming logic with a pedagogical purpose.",
-          "Applied Serious Games and gamification principles to create a more engaging and goal-oriented experience.",
+          "Applied interactive design principles to create a more engaging experience aligned with the project's learning goals.",
           "Led the Android build process (APK), supporting practical validation of the application in a mobile environment."
         ]
       }
     ],
     contact: {
       eyebrow: "Contact",
-      title: "Open to new opportunities",
+      kicker: "contact",
+      titleLineOne: "Let's",
+      titleLineTwo: "talk.",
       description:
         "I am open to software development opportunities, with a strong interest in contributing to well-structured projects, learning from experienced teams, and delivering value through consistent solutions.",
-      finalQuestTitle: "Final quest",
-      finalQuestText:
-        "If this campaign feels right for your team, the final portal is simple: reach out and let's turn the briefing into delivery.",
       contactButton: "Get in touch",
       github: "GitHub",
       resume: "Resume",

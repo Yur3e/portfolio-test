@@ -1,6 +1,6 @@
-# Portfólio Yure
+# Portfólio Profissional
 
-Portfólio de teste com **frontend em React + Vite** e **backend em Node.js + Express**.
+Portfólio profissional com **frontend em React + Vite** e **backend em Node.js + Express**.
 
 ## Estrutura
 - `client/`: frontend React

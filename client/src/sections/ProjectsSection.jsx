@@ -1,4 +1,4 @@
-import QuestSectionShell from "../components/game/QuestSectionShell";
+import SectionShell from "../components/common/SectionShell";
 import ProjectCard from "../components/cards/ProjectCard";
 import { useLanguage } from "../context/LanguageContext";
 
@@ -7,7 +7,7 @@ export default function ProjectsSection() {
   const { projectsSection, projects } = content;
 
   return (
-    <QuestSectionShell
+    <SectionShell
       id="projetos"
       eyebrow={projectsSection.eyebrow}
       title={projectsSection.title}
@@ -18,6 +18,6 @@ export default function ProjectsSection() {
           <ProjectCard key={project.title} project={project} index={index} />
         ))}
       </div>
-    </QuestSectionShell>
+    </SectionShell>
   );
 }

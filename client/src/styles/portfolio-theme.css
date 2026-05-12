@@ -68,6 +68,32 @@
   --app-shell-main-glow:
     radial-gradient(circle at 68% 42%, rgba(0, 216, 160, 0.045), transparent 20%),
     radial-gradient(circle at 24% 76%, rgba(255, 255, 255, 0.02), transparent 14%);
+  --hero-section-pad-top: 5.25rem;
+  --hero-section-pad-bottom: 3rem;
+  --hero-surface-min-height: 620px;
+  --hero-surface-gap: 2.25rem;
+  --hero-surface-pad-y: 3.75rem;
+  --hero-surface-pad-x: 2rem;
+  --hero-title-size: 4.1rem;
+  --hero-role-size: 0.95rem;
+  --hero-text-size: 0.94rem;
+  --hero-metric-min-height: 102px;
+  --hero-metric-pad-y: 1.125rem;
+  --hero-metric-pad-x: 1.125rem;
+  --hero-metric-value-size: 2rem;
+  --hero-watermark-size: 13.5rem;
+  --button-min-height: 44px;
+  --button-pad-y: 0.65rem;
+  --button-pad-x: 1.1rem;
+  --button-font-size: 0.74rem;
+  --content-section-pad-top: 3rem;
+  --section-shell-gap: 1.5rem;
+  --section-shell-pad-bottom: 3rem;
+  --section-title-size: 2.55rem;
+  --card-pad: 1.25rem;
+  --card-title-size: 1.32rem;
+  --contact-title-size: 3.55rem;
+  --intro-name-size: 3.9rem;
 }
 
 html[data-theme="light"] {
@@ -259,13 +285,13 @@ a {
 .hero-tag,
 .hero-metric-card span,
 .hero-inline-panel span,
-.inventory-summary-title,
-.codex-card-title,
+.stack-summary-title,
+.summary-card-title,
 .tech-node-title,
 .project-index,
 .project-card-label,
 .experience-card-topline span,
-.experience-log-meta span,
+.experience-entry-meta span,
 .contact-terminal-kicker,
 .contact-detail-item span,
 .contact-note-card span,
@@ -336,7 +362,7 @@ a {
 .hero-section {
   position: relative;
   min-height: 100vh;
-  padding: 104px 0 72px;
+  padding: var(--hero-section-pad-top) 0 var(--hero-section-pad-bottom);
 }
 
 .hero-grid {
@@ -345,13 +371,13 @@ a {
 
 .hero-surface {
   position: relative;
-  min-height: clamp(760px, calc(100vh - 136px), 980px);
+  min-height: min(var(--hero-surface-min-height), calc(100vh - 128px));
   display: flex;
   flex-direction: column;
   justify-content: center;
-  gap: 54px;
+  gap: var(--hero-surface-gap);
   width: 100%;
-  padding: clamp(56px, 7vw, 92px) clamp(28px, 4vw, 44px);
+  padding: var(--hero-surface-pad-y) var(--hero-surface-pad-x);
   border-top: 1px solid var(--surface-border);
   border-bottom: 1px solid var(--surface-border);
   animation: heroReveal 0.8s ease-out both;
@@ -425,7 +451,7 @@ a {
   display: inline-block;
   isolation: isolate;
   font-family: "Space Grotesk", sans-serif;
-  font-size: clamp(3.4rem, 7.2vw, 5.7rem);
+  font-size: var(--hero-title-size);
   line-height: 0.94;
   letter-spacing: -0.06em;
   animation: titleSettle 0.85s cubic-bezier(0.2, 0.8, 0.2, 1) both;
@@ -486,7 +512,7 @@ a {
   max-width: 56ch;
   margin: 24px 0 0;
   color: var(--hero-role);
-  font-size: 1.08rem;
+  font-size: var(--hero-role-size);
   line-height: 1.55;
 }
 
@@ -494,7 +520,7 @@ a {
   max-width: 62ch;
   margin: 18px 0 0;
   color: var(--muted);
-  font-size: 1.04rem;
+  font-size: var(--hero-text-size);
   line-height: 1.8;
 }
 
@@ -519,13 +545,13 @@ a {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  min-height: 54px;
-  padding: 14px 24px;
+  min-height: var(--button-min-height);
+  padding: var(--button-pad-y) var(--button-pad-x);
   border: 1px solid rgba(0, 216, 160, 0.45);
   background: linear-gradient(180deg, #14dca6 0%, #0fc496 100%);
   color: var(--button-text);
   font-family: "IBM Plex Mono", monospace;
-  font-size: 0.84rem;
+  font-size: var(--button-font-size);
   font-weight: 600;
   letter-spacing: 0.08em;
   text-transform: uppercase;
@@ -610,9 +636,9 @@ a {
 
 .hero-metric-card,
 .content-card,
-.codex-card,
-.inventory-summary-card,
-.inventory-item,
+.profile-summary-card,
+.stack-summary-card,
+.stack-group-card,
 .project-card,
 .experience-card,
 .contact-panel,
@@ -625,17 +651,17 @@ a {
 }
 
 .hero-metric-card {
-  min-height: 126px;
-  padding: 28px 28px 22px;
+  min-height: var(--hero-metric-min-height);
+  padding: var(--hero-metric-pad-y) var(--hero-metric-pad-x) calc(var(--hero-metric-pad-y) - 0.25rem);
   transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
 }
 
 .hero-metric-card:hover,
 .project-card:hover,
 .experience-card:hover,
-.inventory-item:hover,
-.codex-card-item:hover,
-.attribute-row:hover,
+.stack-group-card:hover,
+.summary-card-item:hover,
+.focus-row:hover,
 .contact-detail-item:hover {
   transform: translateY(-4px);
   border-color: rgba(0, 216, 160, 0.2);
@@ -646,7 +672,7 @@ a {
 .hero-inline-panel strong {
   display: block;
   font-family: "Space Grotesk", sans-serif;
-  font-size: clamp(2rem, 3vw, 2.8rem);
+  font-size: var(--hero-metric-value-size);
   line-height: 0.95;
   letter-spacing: -0.06em;
   overflow-wrap: anywhere;
@@ -678,7 +704,7 @@ a {
   inset: 50% 0 auto;
   transform: translateY(-50%);
   font-family: "Space Grotesk", sans-serif;
-  font-size: clamp(8rem, 24vw, 20rem);
+  font-size: var(--hero-watermark-size);
   font-weight: 700;
   line-height: 0.8;
   letter-spacing: -0.08em;
@@ -696,13 +722,13 @@ a {
 .content-section {
   position: relative;
   z-index: 1;
-  padding: 64px 0 0;
+  padding: var(--content-section-pad-top) 0 0;
 }
 
 .section-shell {
   display: grid;
-  gap: 34px;
-  padding: 0 0 64px;
+  gap: var(--section-shell-gap);
+  padding: 0 0 var(--section-shell-pad-bottom);
   border-top: 1px solid var(--section-divider);
   animation: riseFade 0.7s ease-out both;
 }
@@ -737,7 +763,7 @@ a {
 .section-title h2 {
   margin: 0;
   font-family: "Space Grotesk", sans-serif;
-  font-size: 3.35rem;
+  font-size: var(--section-title-size);
   line-height: 0.95;
   letter-spacing: 0;
   overflow-wrap: anywhere;
@@ -755,7 +781,7 @@ a {
   line-height: 1.8;
 }
 
-.about-quest-grid,
+.about-grid,
 .tech-core-layout,
 .contact-layout {
   display: grid;
@@ -764,13 +790,13 @@ a {
 }
 
 .content-card,
-.codex-card,
-.inventory-summary-card,
+.profile-summary-card,
+.stack-summary-card,
 .project-card,
 .experience-card,
 .contact-panel,
 .contact-form {
-  padding: 28px;
+  padding: var(--card-pad);
   transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
 }
 
@@ -785,7 +811,7 @@ a {
 .experience-meta,
 .experience-note,
 .experience-bullets,
-.inventory-summary-card p:last-child {
+.stack-summary-card p:last-child {
   color: var(--muted);
   line-height: 1.88;
 }
@@ -796,7 +822,7 @@ a {
 }
 
 .about-copy-card p:last-child,
-.inventory-summary-card p:last-child {
+.stack-summary-card p:last-child {
   margin-bottom: 0;
 }
 
@@ -807,23 +833,23 @@ a {
   gap: 18px;
 }
 
-.codex-card-title,
-.inventory-summary-title,
+.summary-card-title,
+.stack-summary-title,
 .tech-node-title {
   margin: 0;
   color: var(--accent);
   font-size: 0.82rem;
 }
 
-.codex-card-list,
-.attribute-panel,
+.summary-card-list,
+.focus-panel,
 .contact-detail-list {
   display: grid;
   gap: 12px;
 }
 
-.codex-card-item,
-.attribute-row,
+.summary-card-item,
+.focus-row,
 .contact-note-card,
 .contact-detail-item {
   padding: 16px;
@@ -831,16 +857,16 @@ a {
   background: var(--subpanel-bg);
 }
 
-.codex-card-item span,
-.attribute-row-head span,
+.summary-card-item span,
+.focus-row-head span,
 .contact-detail-item span,
 .contact-note-card span {
   color: var(--muted-soft);
   font-size: 0.76rem;
 }
 
-.codex-card-item strong,
-.attribute-row-head strong,
+.summary-card-item strong,
+.focus-row-head strong,
 .contact-detail-item strong {
   display: block;
   margin-top: 10px;
@@ -850,19 +876,19 @@ a {
   overflow-wrap: anywhere;
 }
 
-.attribute-row-head {
+.focus-row-head {
   display: flex;
   justify-content: space-between;
   gap: 14px;
 }
 
-.attribute-track {
+.focus-track {
   height: 6px;
   margin-top: 14px;
   background: var(--track-bg);
 }
 
-.attribute-fill {
+.focus-fill {
   display: block;
   height: 100%;
   background: linear-gradient(90deg, var(--accent), var(--accent-strong));
@@ -993,8 +1019,7 @@ a {
 
 .tech-node-list span,
 .project-tech,
-.experience-tech,
-.tech-keyword-chip {
+.experience-tech {
   padding: 9px 11px;
   border: 1px solid var(--section-divider);
   background: var(--subpanel-bg);
@@ -1003,12 +1028,6 @@ a {
   font-size: 0.74rem;
   text-transform: uppercase;
   overflow-wrap: anywhere;
-}
-
-.tech-keywords-log {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
 }
 
 .projects-grid {
@@ -1045,7 +1064,7 @@ a {
 }
 
 .project-card-label,
-.experience-log-meta span {
+.experience-entry-meta span {
   color: var(--muted-soft);
   font-size: 0.76rem;
 }
@@ -1054,7 +1073,7 @@ a {
 .experience-header h3 {
   margin: 0;
   font-family: "Space Grotesk", sans-serif;
-  font-size: 1.65rem;
+  font-size: var(--card-title-size);
   letter-spacing: 0;
   overflow-wrap: anywhere;
 }
@@ -1080,7 +1099,7 @@ a {
   background: var(--timeline-line);
 }
 
-.experience-log-card {
+.experience-entry {
   display: grid;
   grid-template-columns: 34px 190px minmax(0, 1fr);
   gap: 30px;
@@ -1088,24 +1107,24 @@ a {
   animation: riseFade 0.7s ease-out both;
 }
 
-.experience-log-card:nth-child(2) {
+.experience-entry:nth-child(2) {
   animation-delay: 0.08s;
 }
 
-.experience-log-card:nth-child(3) {
+.experience-entry:nth-child(3) {
   animation-delay: 0.16s;
 }
 
-.experience-log-card:nth-child(4) {
+.experience-entry:nth-child(4) {
   animation-delay: 0.24s;
 }
 
-.experience-log-rail {
+.experience-entry-rail {
   position: relative;
   min-height: 100%;
 }
 
-.experience-log-dot {
+.experience-entry-dot {
   position: absolute;
   top: 18px;
   left: 50%;
@@ -1117,11 +1136,11 @@ a {
   transform: translateX(-50%);
 }
 
-.experience-log-meta {
+.experience-entry-meta {
   padding-top: 14px;
 }
 
-.experience-log-meta strong {
+.experience-entry-meta strong {
   display: block;
   margin-top: 10px;
   color: var(--text);
@@ -1198,7 +1217,7 @@ a {
 .contact-terminal-title {
   margin: 18px 0 0;
   font-family: "Space Grotesk", sans-serif;
-  font-size: 4.8rem;
+  font-size: var(--contact-title-size);
   line-height: 0.92;
   letter-spacing: 0;
   overflow-wrap: anywhere;
@@ -1321,7 +1340,7 @@ a {
 
 .intro-name {
   font-family: "Space Grotesk", sans-serif;
-  font-size: 4.4rem;
+  font-size: var(--intro-name-size);
   letter-spacing: 0;
   text-shadow: none;
   overflow-wrap: anywhere;
@@ -1347,6 +1366,17 @@ a {
 }
 
 @media (max-width: 1080px) {
+  :root {
+    --hero-surface-min-height: auto;
+    --hero-surface-gap: 1.75rem;
+    --hero-surface-pad-y: 3rem;
+    --hero-surface-pad-x: 0;
+    --hero-title-size: 3.15rem;
+    --hero-watermark-size: 6.8rem;
+    --section-title-size: 2.3rem;
+    --contact-title-size: 2.95rem;
+  }
+
   html {
     scroll-padding-top: 88px;
   }
@@ -1361,7 +1391,7 @@ a {
   }
 
   .hero-content,
-  .about-quest-grid,
+  .about-grid,
   .tech-core-layout,
   .contact-layout {
     grid-template-columns: 1fr;
@@ -1389,34 +1419,18 @@ a {
 
   .hero-surface {
     min-height: auto;
-    padding: 44px 0 64px;
-  }
-
-  .hero-title {
-    font-size: clamp(3.2rem, 9vw, 4.4rem);
-  }
-
-  .hero-watermark {
-    font-size: clamp(6rem, 22vw, 10rem);
-  }
-
-  .section-title h2 {
-    font-size: 2.95rem;
-  }
-
-  .contact-terminal-title {
-    font-size: 3.9rem;
+    padding: var(--hero-surface-pad-y) var(--hero-surface-pad-x);
   }
 
   .experience-timeline::before {
     left: 16px;
   }
 
-  .experience-log-card {
+  .experience-entry {
     grid-template-columns: 32px 1fr;
   }
 
-  .experience-log-meta {
+  .experience-entry-meta {
     grid-column: 2;
     padding-top: 0;
   }
@@ -1427,6 +1441,26 @@ a {
 }
 
 @media (max-width: 760px) {
+  :root {
+    --hero-section-pad-top: 7rem;
+    --hero-section-pad-bottom: 2.5rem;
+    --hero-surface-gap: 1.25rem;
+    --hero-surface-pad-y: 2rem;
+    --hero-surface-pad-x: 0;
+    --hero-title-size: 2.55rem;
+    --hero-role-size: 0.92rem;
+    --hero-text-size: 0.9rem;
+    --hero-metric-min-height: 88px;
+    --hero-metric-pad-y: 1rem;
+    --hero-metric-pad-x: 1rem;
+    --hero-watermark-size: 4.8rem;
+    --section-shell-gap: 1.25rem;
+    --section-shell-pad-bottom: 2.5rem;
+    --section-title-size: 2rem;
+    --contact-title-size: 2.35rem;
+    --intro-name-size: 2.5rem;
+  }
+
   html {
     scroll-padding-top: 120px;
   }
@@ -1475,13 +1509,13 @@ a {
   }
 
   .hero-section {
-    padding-top: 126px;
-    padding-bottom: 56px;
+    padding-top: var(--hero-section-pad-top);
+    padding-bottom: var(--hero-section-pad-bottom);
   }
 
   .hero-surface {
-    gap: 30px;
-    padding: 28px 0 44px;
+    gap: var(--hero-surface-gap);
+    padding: var(--hero-surface-pad-y) var(--hero-surface-pad-x);
   }
 
   .hero-frame {
@@ -1491,7 +1525,6 @@ a {
   }
 
   .hero-title {
-    font-size: clamp(2.8rem, 12vw, 3.6rem);
     letter-spacing: -0.05em;
   }
 
@@ -1503,7 +1536,6 @@ a {
   .hero-watermark {
     inset: auto 0 14%;
     transform: none;
-    font-size: clamp(4.8rem, 24vw, 7rem);
     animation: none;
   }
 
@@ -1513,8 +1545,8 @@ a {
   }
 
   .hero-metric-card {
-    min-height: 110px;
-    padding: 22px 20px 18px;
+    min-height: var(--hero-metric-min-height);
+    padding: var(--hero-metric-pad-y) var(--hero-metric-pad-x) calc(var(--hero-metric-pad-y) - 0.125rem);
   }
 
   .hero-inline-panel {
@@ -1524,12 +1556,8 @@ a {
   }
 
   .section-shell {
-    gap: 26px;
-    padding-bottom: 52px;
-  }
-
-  .section-title h2 {
-    font-size: 2.45rem;
+    gap: var(--section-shell-gap);
+    padding-bottom: var(--section-shell-pad-bottom);
   }
 
   .section-shell-header {
@@ -1555,16 +1583,16 @@ a {
     display: none;
   }
 
-  .experience-log-card {
+  .experience-entry {
     grid-template-columns: 1fr;
     gap: 14px;
   }
 
-  .experience-log-rail {
+  .experience-entry-rail {
     display: none;
   }
 
-  .experience-log-meta,
+  .experience-entry-meta,
   .experience-card {
     grid-column: auto;
   }
@@ -1573,16 +1601,20 @@ a {
     flex-direction: column;
   }
 
-  .contact-terminal-title {
-    font-size: 3.15rem;
-  }
-
-  .intro-name {
-    font-size: 3.25rem;
-  }
 }
 
 @media (max-width: 520px) {
+  :root {
+    --hero-section-pad-top: 7.25rem;
+    --hero-title-size: 2.05rem;
+    --hero-watermark-size: 3.8rem;
+    --section-title-size: 1.75rem;
+    --contact-title-size: 1.9rem;
+    --hero-metric-value-size: 1.7rem;
+    --card-pad: 1rem;
+    --intro-name-size: 1.95rem;
+  }
+
   html {
     scroll-padding-top: 124px;
   }
@@ -1606,11 +1638,7 @@ a {
   }
 
   .hero-section {
-    padding-top: 130px;
-  }
-
-  .hero-title {
-    font-size: clamp(2.25rem, 11vw, 2.9rem);
+    padding-top: var(--hero-section-pad-top);
   }
 
   .hero-actions,
@@ -1624,21 +1652,12 @@ a {
     width: 100%;
   }
 
-  .hero-tag-row,
-  .tech-keywords-log {
+  .hero-tag-row {
     gap: 8px;
-  }
-
-  .section-title h2 {
-    font-size: 2.05rem;
   }
 
   .contact-terminal-shell {
     padding: 72px 0 58px;
-  }
-
-  .contact-terminal-title {
-    font-size: 2.35rem;
   }
 
   .contact-layout {
@@ -1646,22 +1665,7 @@ a {
   }
 
   .hero-watermark {
-    font-size: clamp(4rem, 23vw, 5.4rem);
     opacity: 0.05;
-  }
-
-  .hero-metric-card strong {
-    font-size: 2.25rem;
-  }
-
-  .content-card,
-  .codex-card,
-  .inventory-summary-card,
-  .project-card,
-  .experience-card,
-  .contact-panel,
-  .contact-form {
-    padding: 20px;
   }
 
   .intro-overlay-inner {
@@ -1669,12 +1673,16 @@ a {
     padding: 34px 18px;
   }
 
-  .intro-name {
-    font-size: 2.45rem;
-  }
 }
 
 @media (max-width: 380px) {
+  :root {
+    --hero-title-size: 1.68rem;
+    --section-title-size: 1.62rem;
+    --contact-title-size: 1.68rem;
+    --intro-name-size: 1.68rem;
+  }
+
   .container {
     width: min(100% - 18px, 1240px);
   }
@@ -1693,16 +1701,6 @@ a {
     font-size: 0.66rem;
   }
 
-  .hero-title,
-  .contact-terminal-title,
-  .intro-name {
-    font-size: 2rem;
-  }
-
-  .section-title h2 {
-    font-size: 2rem;
-  }
-
   .hero-surface {
     padding-bottom: 38px;
   }
@@ -1710,13 +1708,18 @@ a {
   .hero-tag,
   .tech-node-list span,
   .project-tech,
-  .experience-tech,
-  .tech-keyword-chip {
+  .experience-tech {
     font-size: 0.66rem;
   }
 }
 
 @media (min-width: 1440px) {
+  :root {
+    --hero-surface-min-height: 780px;
+    --hero-title-size: 4.3rem;
+    --hero-watermark-size: 14.5rem;
+  }
+
   .hero-surface {
     min-height: min(980px, calc(100vh - 136px));
   }
@@ -1725,9 +1728,6 @@ a {
     max-width: 14ch;
   }
 
-  .hero-watermark {
-    font-size: 20rem;
-  }
 }
 
 @media (prefers-reduced-motion: reduce) {

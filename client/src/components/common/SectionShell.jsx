@@ -1,7 +1,7 @@
 import Container from "../layout/Container";
-import SectionTitle from "../common/SectionTitle";
+import SectionTitle from "./SectionTitle";
 
-export default function QuestSectionShell({
+export default function SectionShell({
   id,
   eyebrow,
   title,
@@ -10,7 +10,7 @@ export default function QuestSectionShell({
   className = ""
 }) {
   return (
-    <section id={id} className={`content-section section-shell-wrap ${className}`.trim()}>
+    <section id={id} className={`content-section ${className}`.trim()}>
       <Container>
         <div className="section-shell">
           <div className="section-shell-header">

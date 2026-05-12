@@ -1,4 +1,4 @@
-import QuestSectionShell from "../components/game/QuestSectionShell";
+import SectionShell from "../components/common/SectionShell";
 import { useLanguage } from "../context/LanguageContext";
 
 export default function ExperienceSection() {
@@ -6,7 +6,7 @@ export default function ExperienceSection() {
   const { experienceSection, experience } = content;
 
   return (
-    <QuestSectionShell
+    <SectionShell
       id="experiencia"
       eyebrow={experienceSection.eyebrow}
       title={experienceSection.title}
@@ -14,12 +14,12 @@ export default function ExperienceSection() {
     >
       <div className="experience-timeline">
         {experience.map((item, index) => (
-          <article key={`${item.title}-${item.company}`} className="experience-log-card">
-            <div className="experience-log-rail" aria-hidden="true">
-              <span className="experience-log-dot" />
+          <article key={`${item.title}-${item.company}`} className="experience-entry">
+            <div className="experience-entry-rail" aria-hidden="true">
+              <span className="experience-entry-dot" />
             </div>
 
-            <div className="experience-log-meta">
+            <div className="experience-entry-meta">
               <span>{item.period.toUpperCase()}</span>
               <strong>{item.company}</strong>
             </div>
@@ -36,7 +36,7 @@ export default function ExperienceSection() {
               </div>
 
               <p className="experience-meta">
-                {item.location} Â· {item.mode}
+                {item.location} · {item.mode}
               </p>
 
               {item.note ? <p className="experience-note">{item.note}</p> : null}
@@ -62,6 +62,6 @@ export default function ExperienceSection() {
           </article>
         ))}
       </div>
-    </QuestSectionShell>
+    </SectionShell>
   );
 }

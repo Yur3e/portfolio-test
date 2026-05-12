@@ -11,7 +11,7 @@ export default function ProjectCard({ project, index = 0 }) {
     <article className="project-card">
       <div className="project-card-topline">
         <span className="project-index">{projectIndex}</span>
-        <span className="project-card-label">system_node</span>
+        <span className="project-card-label">{projectsSection.itemLabel}</span>
       </div>
 
       <h3>{project.title}</h3>

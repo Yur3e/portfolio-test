@@ -6,7 +6,7 @@ export const siteContent = {
       subtitle:
         "Desenvolvo aplicações e projetos orientados a dados com foco em clareza, boa estrutura, experiência do usuário e evolução constante.",
       location: "João Pessoa, PB",
-      email: "joseyure.dev@gmail.com",
+      email: "joseyure.sfernandes@gmail.com",
       linkedin: "https://www.linkedin.com/in/yurefernandes/",
       github: "https://github.com/Yur3e",
       resume: "/docs/Jose_Yure_Curriculo_FullStack.pdf"
@@ -205,7 +205,7 @@ export const siteContent = {
       subtitle:
         "I build applications and data-oriented projects with a focus on clarity, solid structure, user experience, and continuous growth.",
       location: "João Pessoa, PB, Brazil",
-      email: "joseyure.dev@gmail.com",
+      email: "joseyure.sfernandes@gmail.com",
       linkedin: "https://www.linkedin.com/in/yurefernandes/",
       github: "https://github.com/Yur3e",
       resume: "/docs/Jose_Yure_Curriculo_FullStack.pdf"

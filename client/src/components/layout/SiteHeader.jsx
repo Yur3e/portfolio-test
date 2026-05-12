@@ -16,22 +16,28 @@ export default function SiteHeader() {
     <header className="site-header">
       <Container className="site-header-shell">
         <a href="#topo" className="site-brand" aria-label={profile.name}>
-          <span className="site-brand-mark">{">_"}</span>
-          <span className="site-brand-name">Yure</span>
+          <img
+            src="/brand/yure-logo-mark.png"
+            alt=""
+            className="site-brand-logo site-brand-logo-dark"
+          />
+          <img
+            src="/brand/yure-logo-light-mark.png"
+            alt=""
+            className="site-brand-logo site-brand-logo-light"
+          />
         </a>
 
-        <div className="site-header-actions">
-          <nav className="site-nav" aria-label="Primary">
-            {navItems.map((item) => (
-              <a key={item.href} href={item.href} className="site-nav-link">
-                <span>{"//"}</span>
-                {item.label}
-              </a>
-            ))}
-          </nav>
+        <nav className="site-nav" aria-label="Primary">
+          {navItems.map((item) => (
+            <a key={item.href} href={item.href} className="site-nav-link">
+              <span>{"//"}</span>
+              {item.label}
+            </a>
+          ))}
+        </nav>
 
-          <LanguageSwitcher />
-        </div>
+        <LanguageSwitcher />
       </Container>
     </header>
   );

@@ -64,36 +64,32 @@
   --intro-overlay-inner-bg: rgba(5, 5, 5, 0.92);
   --intro-overlay-inner-border: rgba(255, 255, 255, 0.08);
   --danger: #ff8181;
-  --app-shell-top-glow: radial-gradient(circle at 50% 0%, rgba(0, 216, 160, 0.12), transparent 46%);
-  --app-shell-main-glow:
-    radial-gradient(circle at 68% 42%, rgba(0, 216, 160, 0.045), transparent 20%),
-    radial-gradient(circle at 24% 76%, rgba(255, 255, 255, 0.02), transparent 14%);
-  --hero-section-pad-top: 5.25rem;
-  --hero-section-pad-bottom: 3rem;
-  --hero-surface-min-height: 620px;
-  --hero-surface-gap: 2.25rem;
-  --hero-surface-pad-y: 3.75rem;
-  --hero-surface-pad-x: 2rem;
-  --hero-title-size: 4.1rem;
-  --hero-role-size: 0.95rem;
-  --hero-text-size: 0.94rem;
-  --hero-metric-min-height: 102px;
-  --hero-metric-pad-y: 1.125rem;
-  --hero-metric-pad-x: 1.125rem;
-  --hero-metric-value-size: 2rem;
-  --hero-watermark-size: 13.5rem;
-  --button-min-height: 44px;
-  --button-pad-y: 0.65rem;
-  --button-pad-x: 1.1rem;
-  --button-font-size: 0.74rem;
-  --content-section-pad-top: 3rem;
-  --section-shell-gap: 1.5rem;
-  --section-shell-pad-bottom: 3rem;
-  --section-title-size: 2.55rem;
-  --card-pad: 1.25rem;
-  --card-title-size: 1.32rem;
-  --contact-title-size: 3.55rem;
-  --intro-name-size: 3.9rem;
+  --hero-section-pad-top: 4.75rem;
+  --hero-section-pad-bottom: 2.5rem;
+  --hero-surface-min-height: 540px;
+  --hero-surface-gap: 1.75rem;
+  --hero-surface-pad-y: 3rem;
+  --hero-surface-pad-x: 1.5rem;
+  --hero-title-size: 3.35rem;
+  --hero-role-size: 0.9rem;
+  --hero-text-size: 0.88rem;
+  --hero-metric-min-height: 86px;
+  --hero-metric-pad-y: 0.95rem;
+  --hero-metric-pad-x: 0.95rem;
+  --hero-metric-value-size: 1.65rem;
+  --hero-watermark-size: 10.5rem;
+  --button-min-height: 40px;
+  --button-pad-y: 0.55rem;
+  --button-pad-x: 0.95rem;
+  --button-font-size: 0.68rem;
+  --content-section-pad-top: 2.35rem;
+  --section-shell-gap: 1.25rem;
+  --section-shell-pad-bottom: 2.35rem;
+  --section-title-size: 2.05rem;
+  --card-pad: 1rem;
+  --card-title-size: 1.12rem;
+  --contact-title-size: 2.85rem;
+  --intro-name-size: 3.15rem;
 }
 
 html[data-theme="light"] {
@@ -152,10 +148,6 @@ html[data-theme="light"] {
   --intro-overlay-inner-bg: rgba(255, 255, 255, 0.82);
   --intro-overlay-inner-border: rgba(20, 20, 20, 0.08);
   --danger: #c74a4a;
-  --app-shell-top-glow: radial-gradient(circle at 50% 0%, rgba(0, 216, 160, 0.09), transparent 48%);
-  --app-shell-main-glow:
-    radial-gradient(circle at 68% 42%, rgba(0, 216, 160, 0.06), transparent 22%),
-    radial-gradient(circle at 24% 76%, rgba(0, 0, 0, 0.04), transparent 16%);
 }
 
 html {
@@ -168,6 +160,7 @@ body {
   min-width: 320px;
   overflow-x: hidden;
   font-family: "Inter", "Segoe UI", sans-serif;
+  font-size: 15px;
   color: var(--text);
   background:
     linear-gradient(var(--bg-grid-line) 1px, transparent 1px),
@@ -193,25 +186,6 @@ a {
   overflow: clip;
 }
 
-.app-shell::before,
-.app-shell::after {
-  content: "";
-  position: fixed;
-  pointer-events: none;
-  z-index: 0;
-}
-
-.app-shell::before {
-  inset: 0 0 auto;
-  height: 180px;
-  background: var(--app-shell-top-glow);
-}
-
-.app-shell::after {
-  inset: 0;
-  background: var(--app-shell-main-glow);
-}
-
 .container {
   width: min(100% - 56px, 1240px);
   min-width: 0;
@@ -228,52 +202,54 @@ a {
 }
 
 .site-header-shell {
-  display: flex;
+  display: grid;
+  grid-template-columns: minmax(120px, 1fr) auto minmax(190px, 1fr);
   align-items: center;
-  justify-content: space-between;
   min-height: 72px;
   gap: 20px;
   min-width: 0;
 }
 
-.site-header-actions {
-  display: flex;
-  align-items: center;
-  justify-content: flex-end;
-  gap: 20px;
-  min-width: 0;
-}
-
 .site-brand {
+  position: relative;
   display: inline-flex;
   align-items: center;
-  gap: 12px;
+  justify-content: center;
+  justify-self: start;
   min-width: 0;
-  font-family: "Space Grotesk", sans-serif;
-  font-size: 1.15rem;
-  font-weight: 700;
-  letter-spacing: 0.04em;
-  text-transform: none;
+  width: clamp(120px, 11vw, 164px);
+  height: 54px;
+  transform: translateX(clamp(10px, 2.2vw, 34px));
 }
 
-.site-brand-mark {
-  color: var(--accent);
+.site-brand-logo {
+  position: absolute;
+  inset: 50% auto auto 50%;
+  width: 100%;
+  height: 100%;
+  transform: translate(-50%, -50%);
+  object-fit: contain;
+  object-position: center;
+  transition: opacity 0.2s ease;
 }
 
-.site-brand-name {
-  color: var(--text);
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
+.site-brand-logo-light {
+  opacity: 0;
 }
 
-.site-brand:hover .site-brand-name {
-  color: var(--text-strong);
+html[data-theme="light"] .site-brand-logo-dark {
+  opacity: 0;
+}
+
+html[data-theme="light"] .site-brand-logo-light {
+  opacity: 1;
 }
 
 .site-nav {
   display: flex;
   align-items: center;
+  justify-content: center;
+  justify-self: center;
   gap: 28px;
   min-width: 0;
 }
@@ -306,7 +282,7 @@ a {
   align-items: center;
   gap: 8px;
   color: var(--muted);
-  font-size: 0.92rem;
+  font-size: 0.84rem;
 }
 
 .site-nav-link span {
@@ -325,6 +301,8 @@ a {
   z-index: auto;
   display: inline-flex;
   align-items: center;
+  justify-content: center;
+  justify-self: end;
   gap: 8px;
   padding: 0;
   border: none;
@@ -334,12 +312,12 @@ a {
 }
 
 .language-button {
-  min-width: 46px;
-  min-height: 38px;
+  min-width: 42px;
+  min-height: 34px;
   border: 1px solid transparent;
   background: transparent;
   color: var(--muted);
-  font-size: 0.74rem;
+  font-size: 0.68rem;
   cursor: pointer;
   transition: background 0.2s ease, border-color 0.2s ease, color 0.2s ease, transform 0.2s ease;
 }
@@ -399,7 +377,7 @@ a {
   gap: 20px;
   color: var(--frame-text);
   font-family: "IBM Plex Mono", monospace;
-  font-size: 0.75rem;
+  font-size: 0.68rem;
   letter-spacing: 0.08em;
   text-transform: uppercase;
   z-index: 2;
@@ -441,7 +419,7 @@ a {
 .contact-terminal-kicker {
   margin: 0;
   color: var(--accent);
-  font-size: 0.94rem;
+  font-size: 0.82rem;
 }
 
 .hero-title {
@@ -571,8 +549,8 @@ a {
 }
 
 .small-button {
-  min-height: 42px;
-  padding: 10px 16px;
+  min-height: 38px;
+  padding: 8px 14px;
 }
 
 .hero-tag-row {
@@ -583,10 +561,10 @@ a {
 }
 
 .hero-tag {
-  padding: 10px 12px;
+  padding: 8px 10px;
   border: 1px solid var(--tag-border);
   color: var(--muted);
-  font-size: 0.7rem;
+  font-size: 0.66rem;
   transition: border-color 0.2s ease, color 0.2s ease, transform 0.2s ease;
 }
 
@@ -683,20 +661,20 @@ a {
   display: block;
   margin-top: 10px;
   color: var(--muted-soft);
-  font-size: 0.78rem;
+  font-size: 0.68rem;
 }
 
 .hero-inline-panel {
   justify-self: end;
   width: 100%;
-  padding: 18px 22px;
+  padding: 14px 18px;
   border: 1px solid var(--panel-border-soft);
   background: var(--inline-panel-bg);
 }
 
 .hero-inline-panel strong {
   margin-top: 6px;
-  font-size: 1.2rem;
+  font-size: 1.02rem;
 }
 
 .hero-watermark {
@@ -838,7 +816,7 @@ a {
 .tech-node-title {
   margin: 0;
   color: var(--accent);
-  font-size: 0.82rem;
+  font-size: 0.72rem;
 }
 
 .summary-card-list,
@@ -852,7 +830,7 @@ a {
 .focus-row,
 .contact-note-card,
 .contact-detail-item {
-  padding: 16px;
+  padding: 13px;
   border: 1px solid var(--section-divider);
   background: var(--subpanel-bg);
 }
@@ -862,7 +840,7 @@ a {
 .contact-detail-item span,
 .contact-note-card span {
   color: var(--muted-soft);
-  font-size: 0.76rem;
+  font-size: 0.68rem;
 }
 
 .summary-card-item strong,
@@ -872,7 +850,7 @@ a {
   margin-top: 10px;
   color: var(--text);
   font-family: "Space Grotesk", sans-serif;
-  font-size: 1rem;
+  font-size: 0.9rem;
   overflow-wrap: anywhere;
 }
 
@@ -971,11 +949,11 @@ a {
 }
 
 .tech-node-card {
-  min-height: 170px;
+  min-height: 142px;
   display: grid;
   align-content: start;
-  gap: 18px;
-  padding: 24px 26px;
+  gap: 14px;
+  padding: 18px 20px;
   animation: riseFade 0.7s ease-out both;
 }
 
@@ -1020,12 +998,12 @@ a {
 .tech-node-list span,
 .project-tech,
 .experience-tech {
-  padding: 9px 11px;
+  padding: 7px 9px;
   border: 1px solid var(--section-divider);
   background: var(--subpanel-bg);
   color: var(--muted);
   font-family: "IBM Plex Mono", monospace;
-  font-size: 0.74rem;
+  font-size: 0.64rem;
   text-transform: uppercase;
   overflow-wrap: anywhere;
 }
@@ -1037,7 +1015,7 @@ a {
 .project-card {
   display: flex;
   flex-direction: column;
-  gap: 18px;
+  gap: 14px;
   animation: riseFade 0.75s ease-out both;
 }
 
@@ -1060,13 +1038,13 @@ a {
 .project-index,
 .experience-card-topline span {
   color: var(--accent);
-  font-size: 0.8rem;
+  font-size: 0.72rem;
 }
 
 .project-card-label,
 .experience-entry-meta span {
   color: var(--muted-soft);
-  font-size: 0.76rem;
+  font-size: 0.68rem;
 }
 
 .project-card h3,
@@ -1086,7 +1064,7 @@ a {
 .experience-timeline {
   position: relative;
   display: grid;
-  gap: 30px;
+  gap: 22px;
 }
 
 .experience-timeline::before {
@@ -1102,7 +1080,7 @@ a {
 .experience-entry {
   display: grid;
   grid-template-columns: 34px 190px minmax(0, 1fr);
-  gap: 30px;
+  gap: 24px;
   align-items: start;
   animation: riseFade 0.7s ease-out both;
 }
@@ -1145,7 +1123,7 @@ a {
   margin-top: 10px;
   color: var(--text);
   font-family: "Space Grotesk", sans-serif;
-  font-size: 1.7rem;
+  font-size: 1.35rem;
   line-height: 1;
   letter-spacing: 0;
   overflow-wrap: anywhere;
@@ -1162,7 +1140,7 @@ a {
 
 .experience-company {
   margin: 8px 0 0;
-  font-size: 0.96rem;
+  font-size: 0.86rem;
 }
 
 .experience-meta,
@@ -1187,12 +1165,12 @@ a {
 }
 
 .contact-section {
-  padding-top: 90px;
+  padding-top: 68px;
 }
 
 .contact-terminal-shell {
   position: relative;
-  padding: 88px 0 76px;
+  padding: 68px 0 58px;
   border-top: 1px solid var(--contact-shell-divider);
   border-bottom: 1px solid var(--contact-shell-divider);
   overflow: hidden;
@@ -1234,16 +1212,16 @@ a {
 
 .contact-terminal-description {
   max-width: 680px;
-  margin: 24px auto 0;
+  margin: 20px auto 0;
 }
 
 .contact-links-terminal {
   justify-content: center;
-  margin-top: 30px;
+  margin-top: 24px;
 }
 
 .contact-layout {
-  padding: 34px 0 76px;
+  padding: 28px 0 58px;
 }
 
 .contact-note-card p {
@@ -1259,7 +1237,7 @@ a {
   gap: 8px;
   color: var(--text);
   font-family: "IBM Plex Mono", monospace;
-  font-size: 0.78rem;
+  font-size: 0.7rem;
   text-transform: uppercase;
 }
 
@@ -1270,7 +1248,7 @@ a {
   border: 1px solid var(--contact-field-border);
   background: var(--subpanel-bg);
   color: var(--text);
-  padding: 14px 16px;
+  padding: 12px 14px;
 }
 
 .contact-form textarea {
@@ -1322,7 +1300,7 @@ a {
 .site-footer p {
   margin: 0;
   color: var(--site-footer-muted);
-  font-size: 0.7rem;
+  font-size: 0.64rem;
 }
 
 .intro-overlay {
@@ -1368,13 +1346,13 @@ a {
 @media (max-width: 1080px) {
   :root {
     --hero-surface-min-height: auto;
-    --hero-surface-gap: 1.75rem;
-    --hero-surface-pad-y: 3rem;
+    --hero-surface-gap: 1.4rem;
+    --hero-surface-pad-y: 2.45rem;
     --hero-surface-pad-x: 0;
-    --hero-title-size: 3.15rem;
-    --hero-watermark-size: 6.8rem;
-    --section-title-size: 2.3rem;
-    --contact-title-size: 2.95rem;
+    --hero-title-size: 2.7rem;
+    --hero-watermark-size: 5.8rem;
+    --section-title-size: 1.95rem;
+    --contact-title-size: 2.45rem;
   }
 
   html {
@@ -1384,10 +1362,6 @@ a {
   .site-header-shell {
     min-height: 64px;
     align-items: center;
-  }
-
-  .site-header-actions {
-    gap: 14px;
   }
 
   .hero-content,
@@ -1442,23 +1416,23 @@ a {
 
 @media (max-width: 760px) {
   :root {
-    --hero-section-pad-top: 7rem;
-    --hero-section-pad-bottom: 2.5rem;
-    --hero-surface-gap: 1.25rem;
-    --hero-surface-pad-y: 2rem;
+    --hero-section-pad-top: 6.35rem;
+    --hero-section-pad-bottom: 2rem;
+    --hero-surface-gap: 1rem;
+    --hero-surface-pad-y: 1.65rem;
     --hero-surface-pad-x: 0;
-    --hero-title-size: 2.55rem;
-    --hero-role-size: 0.92rem;
-    --hero-text-size: 0.9rem;
-    --hero-metric-min-height: 88px;
-    --hero-metric-pad-y: 1rem;
-    --hero-metric-pad-x: 1rem;
-    --hero-watermark-size: 4.8rem;
-    --section-shell-gap: 1.25rem;
-    --section-shell-pad-bottom: 2.5rem;
-    --section-title-size: 2rem;
-    --contact-title-size: 2.35rem;
-    --intro-name-size: 2.5rem;
+    --hero-title-size: 2.12rem;
+    --hero-role-size: 0.86rem;
+    --hero-text-size: 0.84rem;
+    --hero-metric-min-height: 76px;
+    --hero-metric-pad-y: 0.8rem;
+    --hero-metric-pad-x: 0.8rem;
+    --hero-watermark-size: 3.9rem;
+    --section-shell-gap: 1rem;
+    --section-shell-pad-bottom: 2rem;
+    --section-title-size: 1.7rem;
+    --contact-title-size: 2rem;
+    --intro-name-size: 2.12rem;
   }
 
   html {
@@ -1470,6 +1444,7 @@ a {
   }
 
   .site-header-shell {
+    grid-template-columns: auto 1fr auto;
     min-height: 64px;
     flex-wrap: wrap;
     align-items: center;
@@ -1479,24 +1454,21 @@ a {
     padding-bottom: 10px;
   }
 
-  .site-header-actions {
-    display: contents;
-  }
-
   .site-brand {
-    order: 1;
-    flex: 1 1 auto;
+    grid-column: 1;
+    width: clamp(104px, 22vw, 136px);
+    height: 48px;
+    transform: translateX(clamp(6px, 2vw, 18px));
   }
 
   .language-switcher {
-    order: 2;
-    flex: 0 0 auto;
-    margin-left: auto;
+    grid-column: 3;
+    justify-self: end;
   }
 
   .site-nav {
-    order: 3;
-    flex: 0 0 100%;
+    grid-column: 1 / -1;
+    grid-row: 2;
     gap: 14px;
     overflow-x: auto;
     width: 100%;
@@ -1605,14 +1577,14 @@ a {
 
 @media (max-width: 520px) {
   :root {
-    --hero-section-pad-top: 7.25rem;
-    --hero-title-size: 2.05rem;
-    --hero-watermark-size: 3.8rem;
-    --section-title-size: 1.75rem;
-    --contact-title-size: 1.9rem;
-    --hero-metric-value-size: 1.7rem;
-    --card-pad: 1rem;
-    --intro-name-size: 1.95rem;
+    --hero-section-pad-top: 6.45rem;
+    --hero-title-size: 1.82rem;
+    --hero-watermark-size: 3.2rem;
+    --section-title-size: 1.5rem;
+    --contact-title-size: 1.68rem;
+    --hero-metric-value-size: 1.45rem;
+    --card-pad: 0.85rem;
+    --intro-name-size: 1.72rem;
   }
 
   html {
@@ -1624,8 +1596,13 @@ a {
   }
 
   .site-brand {
-    font-size: 0.82rem;
-    gap: 8px;
+    width: 104px;
+    height: 42px;
+  }
+
+  .site-brand-logo {
+    width: 100%;
+    height: 100%;
   }
 
   .site-nav {
@@ -1657,7 +1634,7 @@ a {
   }
 
   .contact-terminal-shell {
-    padding: 72px 0 58px;
+    padding: 54px 0 44px;
   }
 
   .contact-layout {
@@ -1677,18 +1654,14 @@ a {
 
 @media (max-width: 380px) {
   :root {
-    --hero-title-size: 1.68rem;
-    --section-title-size: 1.62rem;
-    --contact-title-size: 1.68rem;
-    --intro-name-size: 1.68rem;
+    --hero-title-size: 1.5rem;
+    --section-title-size: 1.4rem;
+    --contact-title-size: 1.5rem;
+    --intro-name-size: 1.48rem;
   }
 
   .container {
     width: min(100% - 18px, 1240px);
-  }
-
-  .site-brand-name {
-    max-width: 64px;
   }
 
   .language-button {
@@ -1715,9 +1688,9 @@ a {
 
 @media (min-width: 1440px) {
   :root {
-    --hero-surface-min-height: 780px;
-    --hero-title-size: 4.3rem;
-    --hero-watermark-size: 14.5rem;
+    --hero-surface-min-height: 650px;
+    --hero-title-size: 3.55rem;
+    --hero-watermark-size: 11.5rem;
   }
 
   .hero-surface {

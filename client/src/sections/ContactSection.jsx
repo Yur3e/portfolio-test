@@ -3,7 +3,20 @@ import ButtonLink from "../components/common/ButtonLink";
 import Container from "../components/layout/Container";
 import { useLanguage } from "../context/LanguageContext";
 
-const API_URL = `${import.meta.env.VITE_API_URL || "http://localhost:3001"}/api/contact`;
+const API_BASE_URL = import.meta.env.VITE_API_URL?.replace(/\/$/, "") || "";
+const API_URL = `${API_BASE_URL}/api/contact`;
+
+async function readResponseBody(response) {
+  const contentType = response.headers.get("content-type") || "";
+
+  if (contentType.includes("application/json")) {
+    return response.json();
+  }
+
+  return {
+    message: await response.text()
+  };
+}
 
 export default function ContactSection() {
   const { content } = useLanguage();
@@ -36,7 +49,7 @@ export default function ContactSection() {
         body: JSON.stringify(formData)
       });
 
-      const data = await response.json();
+      const data = await readResponseBody(response);
 
       if (!response.ok) {
         throw new Error(data.message || contact.sendError);
@@ -45,9 +58,11 @@ export default function ContactSection() {
       setStatus({ type: "success", text: data.message });
       setFormData({ name: "", email: "", message: "" });
     } catch (error) {
+      console.error("Contact form request failed:", error);
+
       setStatus({
         type: "error",
-        text: error.message || contact.genericError
+        text: error instanceof TypeError ? contact.connectionError : error.message || contact.genericError
       });
     } finally {
       setIsSubmitting(false);

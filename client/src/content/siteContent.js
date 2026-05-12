@@ -70,12 +70,44 @@ export const siteContent = {
       title: "Stacks principais",
       description: "Ferramentas e linguagens com as quais venho construindo projetos.",
       summaryTitle: "Stack atual",
-      groups: {
-        frontend: "Frontend",
-        database: "Dados",
-        infrastructure: "Backend",
-        tooling: "Ferramentas"
-      }
+      groups: [
+        {
+          id: "backend",
+          title: "Backend e APIs",
+          items: ["C#", ".NET", "ASP.NET Core", "Python", "Java", "Node.js", "APIs REST", "JSON", "HTTP"]
+        },
+        {
+          id: "data",
+          title: "Dados e Automação",
+          items: [
+            "Pandas",
+            "NumPy",
+            "Matplotlib",
+            "Seaborn",
+            "Streamlit",
+            "ETL",
+            "EDA",
+            "Estatística",
+            "Machine Learning",
+            "Web Scraping"
+          ]
+        },
+        {
+          id: "database",
+          title: "Banco de Dados",
+          items: ["SQL Server", "MySQL", "SQLite", "MongoDB"]
+        },
+        {
+          id: "frontend",
+          title: "Frontend",
+          items: ["JavaScript", "TypeScript", "HTML", "CSS", "Bootstrap", "Figma"]
+        },
+        {
+          id: "devops",
+          title: "DevOps e Ferramentas",
+          items: ["Git", "GitHub", "Docker", "CI/CD", "n8n", "Jira", "Trello"]
+        }
+      ]
     },
     projectsSection: {
       eyebrow: "Projetos",
@@ -195,6 +227,8 @@ export const siteContent = {
       submitting: "Enviando...",
       submit: "Enviar mensagem",
       sendError: "Não foi possível enviar a mensagem.",
+      connectionError:
+        "Não foi possível conectar ao servidor. Verifique se o deploy do backend está ativo e se o frontend está usando a URL correta.",
       genericError: "Erro ao enviar a mensagem."
     },
   },
@@ -269,12 +303,44 @@ export const siteContent = {
       title: "Core stack",
       description: "Tools and languages I have been using to build projects.",
       summaryTitle: "Current stack",
-      groups: {
-        frontend: "Frontend",
-        database: "Data",
-        infrastructure: "Backend",
-        tooling: "Tooling"
-      }
+      groups: [
+        {
+          id: "backend",
+          title: "Backend and APIs",
+          items: ["C#", ".NET", "ASP.NET Core", "Python", "Java", "Node.js", "REST APIs", "JSON", "HTTP"]
+        },
+        {
+          id: "data",
+          title: "Data and Automation",
+          items: [
+            "Pandas",
+            "NumPy",
+            "Matplotlib",
+            "Seaborn",
+            "Streamlit",
+            "ETL",
+            "EDA",
+            "Statistics",
+            "Machine Learning",
+            "Web Scraping"
+          ]
+        },
+        {
+          id: "database",
+          title: "Databases",
+          items: ["SQL Server", "MySQL", "SQLite", "MongoDB"]
+        },
+        {
+          id: "frontend",
+          title: "Frontend",
+          items: ["JavaScript", "TypeScript", "HTML", "CSS", "Bootstrap", "Figma"]
+        },
+        {
+          id: "devops",
+          title: "DevOps and Tools",
+          items: ["Git", "GitHub", "Docker", "CI/CD", "n8n", "Jira", "Trello"]
+        }
+      ]
     },
     projectsSection: {
       eyebrow: "Projects",
@@ -394,6 +460,8 @@ export const siteContent = {
       submitting: "Sending...",
       submit: "Send message",
       sendError: "Could not send the message.",
+      connectionError:
+        "Could not connect to the server. Check that the backend deploy is active and the frontend is using the correct URL.",
       genericError: "Error sending the message."
     },
   }

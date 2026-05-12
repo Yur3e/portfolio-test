@@ -1,12 +1,11 @@
 import SectionShell from "../components/common/SectionShell";
 import { useLanguage } from "../context/LanguageContext";
 const STACK_BALANCE = [
-  { label: "frontend", value: 86 },
-  { label: "backend", value: 82 },
-  { label: "data", value: 78 },
-  { label: "database", value: 74 },
-  { label: "design", value: 68 },
-  { label: "tooling", value: 76 }
+  { label: "backend", value: 84 },
+  { label: "data", value: 82 },
+  { label: "database", value: 78 },
+  { label: "frontend", value: 76 },
+  { label: "devops", value: 72 }
 ];
 
 function polarPoint(index, total, radius, center = 160) {
@@ -46,7 +45,7 @@ function TechNodeIcon({ kind }) {
     "aria-hidden": "true"
   };
 
-  if (kind === "frontend") {
+  if (kind === "backend") {
     return (
       <svg {...commonProps}>
         <circle cx="12" cy="12" r="3.2" />
@@ -56,10 +55,23 @@ function TechNodeIcon({ kind }) {
     );
   }
 
-  if (kind === "infrastructure") {
+  if (kind === "data") {
     return (
       <svg {...commonProps}>
-        <path d="M7.4 18.2H17a4.2 4.2 0 0 0 .7-8.3 5.6 5.6 0 0 0-10.8 1.5A3.6 3.6 0 0 0 7.4 18.2Z" />
+        <path d="M4 19.5V4.5" />
+        <path d="M4 19.5h16" />
+        <path d="m7 15 3.2-3.6 3 2.4L19 7" />
+        <path d="M7 15h.1M10.2 11.4h.1M13.2 13.8h.1M19 7h.1" />
+      </svg>
+    );
+  }
+
+  if (kind === "frontend") {
+    return (
+      <svg {...commonProps}>
+        <path d="m8 9-4 3 4 3" />
+        <path d="m16 9 4 3-4 3" />
+        <path d="m14 5-4 14" />
       </svg>
     );
   }
@@ -84,28 +96,7 @@ function TechNodeIcon({ kind }) {
 export default function StacksSection() {
   const { content } = useLanguage();
   const { stacks: stacksContent } = content;
-  const groups = [
-    {
-      id: "frontend",
-      title: stacksContent.groups.frontend,
-      items: ["JavaScript", "React", "Node.js", "C#"]
-    },
-    {
-      id: "database",
-      title: stacksContent.groups.database,
-      items: ["Python", "MySQL", "SQLite", "MongoDB"]
-    },
-    {
-      id: "infrastructure",
-      title: stacksContent.groups.infrastructure,
-      items: ["Django", "Flask", "SQL Server"]
-    },
-    {
-      id: "tooling",
-      title: stacksContent.groups.tooling,
-      items: ["Git", "API REST", "UI/UX", "Figma"]
-    }
-  ];
+  const groups = stacksContent.groups;
 
   return (
     <SectionShell

@@ -1,3 +1,5 @@
+import "./loadEnv.js";
+
 export const env = {
   port: process.env.PORT || 3001,
   emailHost: process.env.EMAIL_HOST,

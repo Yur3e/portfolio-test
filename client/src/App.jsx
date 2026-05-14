@@ -1,8 +1,9 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import IntroOverlay from "./components/IntroOverlay";
 import { LanguageProvider } from "./context/LanguageContext";
 import { ThemeProvider } from "./context/ThemeContext";
 import Home from "./pages/Home";
+import { removeUrlHash } from "./utils/scrollToSection";
 
 export default function App() {
   const [showIntro, setShowIntro] = useState(() => {
@@ -17,6 +18,10 @@ export default function App() {
     window.localStorage.setItem("portfolio-intro-seen", "true");
     setShowIntro(false);
   }
+
+  useEffect(() => {
+    removeUrlHash();
+  }, []);
 
   return (
     <ThemeProvider>

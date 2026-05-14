@@ -1,3 +1,5 @@
+import { scrollToSection } from "../../utils/scrollToSection";
+
 export default function ButtonLink({
   href,
   children,
@@ -5,10 +7,26 @@ export default function ButtonLink({
   target,
   rel
 }) {
+  const isSectionLink = href?.startsWith("#");
   const className = variant === "secondary" ? "button button-secondary" : "button";
 
+  function handleClick(event) {
+    if (!isSectionLink) {
+      return;
+    }
+
+    event.preventDefault();
+    scrollToSection(href);
+  }
+
   return (
-    <a href={href} className={className} target={target} rel={rel}>
+    <a
+      href={isSectionLink ? "/" : href}
+      className={className}
+      target={target}
+      rel={rel}
+      onClick={handleClick}
+    >
       {children}
     </a>
   );

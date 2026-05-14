@@ -1,42 +1,71 @@
-# Portfolio Profissional
+# Portfólio Profissional - José Yure
 
-Portfolio profissional com **frontend em React + Vite** e **backend em Node.js + Express**.
+Este projeto é o meu portfólio pessoal como desenvolvedor de software. Mais do que uma página para reunir links, eu quis construir uma experiência que mostrasse um pouco da minha forma de pensar: organização, cuidado visual, clareza na comunicação e uma base técnica simples de manter.
 
-## Estrutura
-- `client/`: frontend React
-- `server/`: backend Node.js
+A proposta foi criar um portfólio full stack com frontend em React e backend em Node.js, reunindo minha trajetória, tecnologias, projetos, currículo e um formulário de contato funcional.
 
-## Funcionalidades
-- Pagina de portfolio com secoes separadas em componentes
-- Dados do perfil organizados em arquivos proprios
-- Formulario de contato conectado ao backend
-- API com validacao basica e tratamento de erros
+## O que eu quis demonstrar com este projeto
 
-## Desenvolvimento
-1. Copie `server/.env.example` para `server/.env` e preencha as credenciais SMTP.
-2. Em um terminal, rode `npm --prefix server run dev`.
-3. Em outro terminal, rode `npm --prefix client run dev`.
-4. Acesse a URL exibida pelo Vite, normalmente `http://127.0.0.1:5173/`.
+Ao desenvolver este portfólio, meu objetivo foi mostrar que consigo ir além de uma página estática. Eu queria uma aplicação com estrutura real de projeto, separação entre frontend e backend, conteúdo bem organizado e um fluxo de contato funcionando de ponta a ponta.
 
-No desenvolvimento, o Vite encaminha chamadas de `/api` para `http://127.0.0.1:3001`. Em producao, defina `VITE_API_URL` no ambiente do frontend quando a API estiver em outro dominio.
+Alguns pontos que trabalhei com mais intenção:
 
-## Deploy no Render
-Voce pode publicar como um unico **Web Service** no Render:
+- uma interface com identidade própria, responsiva e confortável de navegar;
+- conteúdo em português e inglês, pensando também em oportunidades fora do Brasil;
+- tema claro e escuro com preferência salva no navegador;
+- seções organizadas para apresentar perfil, stack, projetos, experiência e contato;
+- formulário conectado a uma API própria, com validação e envio de e-mail;
+- deploy no Render servindo frontend e backend no mesmo domínio.
 
-- Build command: `npm run build`
-- Start command: `npm start`
-- Root directory: deixe vazio, usando a raiz do repositorio
+## Visão geral
 
-Nesse formato, o Express serve o frontend gerado em `client/dist` e a API no mesmo dominio. O formulario chama `/api/contact`, entao nao precisa configurar `VITE_API_URL`.
+O projeto está dividido em duas partes principais:
 
-Configure tambem as variaveis de ambiente do backend no Render:
+- `client/`: aplicação React criada com Vite;
+- `server/`: API em Node.js com Express.
 
-- `EMAIL_HOST`
-- `EMAIL_PORT`
-- `EMAIL_SECURE`
-- `EMAIL_USER`
-- `EMAIL_PASS`
-- `EMAIL_FROM`
-- `EMAIL_TO`
+No ambiente de produção, o backend também serve os arquivos gerados do frontend. Isso permite publicar o portfólio como um único Web Service no Render, mantendo o site e a API no mesmo domínio.
 
-Se voce mantiver frontend e backend como servicos separados no Render, defina `VITE_API_URL` no servico do frontend com a URL publica do backend, por exemplo `https://seu-backend.onrender.com`, e faca um novo deploy do frontend depois de alterar essa variavel.
+## Principais funcionalidades
+
+- Página inicial com apresentação profissional e links de contato.
+- Seção "Sobre mim" com resumo da minha formação e foco atual.
+- Lista de tecnologias separadas por área: backend, dados, banco de dados, frontend e ferramentas.
+- Projetos em destaque, incluindo este portfólio e projetos orientados a dados.
+- Linha de experiência profissional e acadêmica.
+- Alternância entre português e inglês.
+- Alternância entre tema claro e escuro.
+- Formulário de contato integrado ao backend.
+- Envio de e-mail com Nodemailer.
+- Validação básica dos dados enviados pelo formulário.
+- Tratamento de erros na API.
+
+## Tecnologias utilizadas
+
+**Frontend**
+
+- React
+- Vite
+- JavaScript
+- CSS
+
+**Backend**
+
+- Node.js
+- Express
+- Nodemailer
+- CORS
+
+**Deploy e organização**
+
+- Render
+- Git e GitHub
+- Estrutura full stack com `client` e `server`
+
+## Decisões técnicas
+
+Uma das escolhas principais foi manter o conteúdo do site separado da estrutura visual. Os textos, projetos, experiências e informações do perfil ficam organizados em arquivos próprios, o que facilita atualizar o portfólio sem precisar mexer diretamente na lógica dos componentes.
+
+Também optei por criar o formulário de contato com uma API própria, em vez de usar apenas um link externo. Isso me permitiu trabalhar validação, tratamento de erro, configuração de variáveis de ambiente e envio de e-mail no backend.
+
+No deploy, escolhi um formato em que o Express serve tanto a API quanto o frontend gerado pelo Vite. Para um portfólio pessoal, isso simplifica a publicação e evita a necessidade de manter dois serviços separados.

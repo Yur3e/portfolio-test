@@ -5,6 +5,7 @@ import { useLanguage } from "../context/LanguageContext";
 
 const API_BASE_URL = import.meta.env.VITE_API_URL?.replace(/\/$/, "") || "";
 const API_URL = `${API_BASE_URL}/api/contact`;
+const REQUEST_TIMEOUT_MS = 20000;
 
 async function readResponseBody(response) {
   const contentType = response.headers.get("content-type") || "";
@@ -39,6 +40,8 @@ export default function ContactSection() {
     event.preventDefault();
     setIsSubmitting(true);
     setStatus({ type: "", text: "" });
+    const controller = new AbortController();
+    const timeoutId = window.setTimeout(() => controller.abort(), REQUEST_TIMEOUT_MS);
 
     try {
       const response = await fetch(API_URL, {
@@ -46,7 +49,8 @@ export default function ContactSection() {
         headers: {
           "Content-Type": "application/json"
         },
-        body: JSON.stringify(formData)
+        body: JSON.stringify(formData),
+        signal: controller.signal
       });
 
       const data = await readResponseBody(response);
@@ -60,11 +64,17 @@ export default function ContactSection() {
     } catch (error) {
       console.error("Contact form request failed:", error);
 
+      const isTimeout = error instanceof DOMException && error.name === "AbortError";
+
       setStatus({
         type: "error",
-        text: error instanceof TypeError ? contact.connectionError : error.message || contact.genericError
+        text:
+          isTimeout || error instanceof TypeError
+            ? contact.connectionError
+            : error.message || contact.genericError
       });
     } finally {
+      window.clearTimeout(timeoutId);
       setIsSubmitting(false);
     }
   }

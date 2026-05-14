@@ -56,8 +56,8 @@ export const siteContent = {
       ],
       statsTitle: "Areas de foco",
       stats: [
-        { label: "Arquitetura", value: "78" },
-        { label: "UX/UI", value: "72" },
+        { label: "Arquitetura", value: "90" },
+        { label: "UX/UI", value: "65" },
         { label: "Dados", value: "80" }
       ],
       paragraphs: [

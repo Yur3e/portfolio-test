@@ -12,6 +12,9 @@ function createTransporter() {
     host: env.emailHost,
     port: env.emailPort,
     secure: env.emailSecure,
+    connectionTimeout: 10000,
+    greetingTimeout: 10000,
+    socketTimeout: 15000,
     auth: {
       user: env.emailUser,
       pass: env.emailPass

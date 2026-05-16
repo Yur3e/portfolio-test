@@ -9,7 +9,7 @@ export const siteContent = {
       email: "joseyure.sfernandes@gmail.com",
       linkedin: "https://www.linkedin.com/in/yurefernandes/",
       github: "https://github.com/Yur3e",
-      resume: "/docs/Jose_Yure_Curriculo_FullStack.pdf"
+      resume: "/docs/CV_FullStack_Yure_Fernandes.pdf"
     },
     intro: {
       loading: "Portfólio carregando",
@@ -242,7 +242,7 @@ export const siteContent = {
       email: "joseyure.sfernandes@gmail.com",
       linkedin: "https://www.linkedin.com/in/yurefernandes/",
       github: "https://github.com/Yur3e",
-      resume: "/docs/Jose_Yure_Curriculo_FullStack.pdf"
+      resume: "/docs/CV_FullStack_Yure_Fernandes.pdf"
     },
     intro: {
       loading: "Loading portfolio",
